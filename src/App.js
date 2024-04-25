@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Main from "./Main.js"
+import PrintPage from './PrintPage.js';
 function App() {
+  const [values,setValues] = useState({
+    'Product':'',
+    'Batch No':'',
+    'Curing': '',
+    'D.O.MFG': ''
+  })
+
+
+  function submitbtn(){ 
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" exact element={<Main values ={values} setValues={setValues} />}/>
+      <Route path="/printpage" exact element={<PrintPage value={values} />}/>
+  </Routes>
   );
 }
 
