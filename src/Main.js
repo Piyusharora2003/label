@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom';
 
 function Main({values,setValues}) {
-    const labels = ['Product','Batch No','Baking Soda','D.O.MFG']
+    const labels = ['Product','Batch No','Baking Schedule','D.O.MFG']
 
     return (
     <div className='app1'>
