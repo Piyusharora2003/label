@@ -9,7 +9,7 @@ function Slip({value}) {
             Object.keys(value).map((key)=>{
                 return <div className='roww'>
                     <div className='' style={{
-                        width: '29%',
+                        width: '40%',
                         paddingLeft: '10px',
                         // padding-left: '10px'
                     }}>
