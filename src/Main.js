@@ -2,13 +2,9 @@ import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom';
 
 function Main({values,setValues}) {
-    const labels = ['Product','Batch No','Curing','D.O.MFG']
+    const labels = ['Product','Batch No','Baking Soda','D.O.MFG']
 
-    function submitbtn() {
-
-    }
-
-  return (
+    return (
     <div className='app1'>
       {
         labels.map((elem)=>{

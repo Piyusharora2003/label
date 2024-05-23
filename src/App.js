@@ -8,14 +8,14 @@ function App() {
   const [values,setValues] = useState({
     'Product':'',
     'Batch No':'',
-    'Curing': '',
+    'Baking Soda': '',
     'D.O.MFG': ''
   })
 
   const testObj = {
     'Product':'Grey 70 35 str Glossy',
     'Batch No':'JC-01-21-22',
-    'Curing': '180 ;c 110 min (EMT)',
+    'Baking Soda': '180 ;c 110 min (EMT)',
     'D.O.MFG': '16/05/2021'
   }
 
