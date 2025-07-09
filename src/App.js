@@ -1,26 +1,27 @@
-import './App.css';
-import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Main from "./Main.js"
-import PrintPage from './PrintPage.js';
+import "./App.css";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Main from "./Main.js";
+import PrintPage from "./PrintPage.js";
+
 function App() {
-  const [ProductName , setProductName] = useState("");
-  const [values,setValues] = useState({
-    'Batch No':'',
-    'Baking Schedule': '',
-    'D.O.MFG': ''
-  })
+  const sampleProduct = {
+    batchNo: "B12345",
+    codeNo: "C67890",
+    curing: "24 15",
+    manufacturingDate: "2025-07-01",
+    productName: "SuperGrip Tyre Sealant",
+  };
 
-  const testObj = {
-    'Batch No':'JC-01-21-22',
-    'Baking Schedule': '180 ;c 110 min (EMT)',
-    'D.O.MFG': '16/05/2021'
-  }
-
+  const [product, setProduct] = useState({ ...sampleProduct });
   return (
     <Routes>
-      <Route path="/" exact element={<Main values ={values} setValues={setValues} ProductName = {ProductName} setProductName ={setProductName}/>}/>
-      <Route path="/printpage" exact element={<PrintPage value={values} ProductName = {ProductName} />}/>
+      <Route
+        path="/"
+        exact
+        element={<Main product={product} setProduct={setProduct} />}
+      />
+      <Route path="/printpage" exact element={<PrintPage value={product} />} />
     </Routes>
   );
 }

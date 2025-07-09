@@ -1,47 +1,41 @@
-import React from 'react'
-import "./index.css"
+import React from "react";
+import "./index.css";
 
-function Slip({value , ProductName}) {
-    
-    return (
-        <div className='slip'>
-            <div className={`fslarge roww ${ProductName.length < 15 ? "text-center" : ""}`}>
-                {ProductName} 
-            </div>
-        {
-            Object.keys(value).map((key)=>{
-                return <div className='roww'>
-                    <div className='' style={{
-                        width: '40%',
-                        paddingLeft: '10px',
-                        // padding-left: '10px'
-                    }}>
-                    {key.toUpperCase()} :
-                    </div>                    
-                       {value[key].toUpperCase()}    
-                </div>
-            })
-        }
-        </div>
-    )
-}
+function Slip({ product }) {
+  const organizationName = "JAINSON COATS";
+  const curing = product.curing.split(" ");
+  return (
+    <div className="slip-main">
+      <div className="center fs-13px underline">{organizationName}</div>
+      <div className="center fs-18px">{product.productName}</div>
 
-function PrintPage({value , ProductName}) {
-    let arr = [1,2,3,4,5,6,7,8,9,10];
-    return (
-        <>
-    <div className='flx'>
-        {
-            arr.map((elem)=>{
-                return <Slip value={value} key={elem} ProductName = {ProductName}/>
-            })
-        }
-
-
+      <div className="field-line">
+        <strong>Batch No:</strong> {product.batchNo}
+      </div>
+      <div className="field-line">
+        <strong>Code No:</strong> {product.codeNo}
+      </div>
+      <div className="field-line">
+        <strong>Curing:</strong> {curing[0]} °C for {curing[1]} MIN
+      </div>
+      <div className="field-line">
+        <strong>D.O.M:</strong> {product.manufacturingDate}
+      </div>
     </div>
-
-        </>
-  )
+  );
 }
 
-export default PrintPage
+function PrintPage({ value }) {
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  return (
+    <>
+      <div className="print-page-main">
+        {arr.map((elem) => {
+          return <Slip product={value} key={elem} />;
+        })}
+      </div>
+    </>
+  );
+}
+
+export default PrintPage;

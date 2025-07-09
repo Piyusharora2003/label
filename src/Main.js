@@ -1,33 +1,75 @@
-import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
-function Main({values,setValues , ProductName , setProductName}) {
-    const labels = ['Batch No','Baking Schedule','D.O.MFG']
+function Main({ product, setProduct }) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-    return (
-    <div className='app1'>
-      <div className='row'>
-            <label htmlFor = "ProductName" className='labell'>ProductName</label>
-            <input name={ProductName} id = "ProductName" onChange={(e)=>{
-              setProductName(e.target.value);
-            }}/>
-          </div>
-      {
-        labels.map((elem)=>{
+  return (
+    <div className="main-container">
+      <h2>Enter Product Details</h2>
+      <form className="product-form">
+        <label>
+          Product Name:
+          <input
+            type="text"
+            name="productName"
+            value={product.productName}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Batch No:
+          <input
+            type="text"
+            name="batchNo"
+            value={product.batchNo}
+            onChange={handleChange}
+          />
+        </label>
 
-          return (<div className='row'>
-            <label htmlFor={elem} className='labell'>{elem.toUpperCase()}</label>
-            <input name={elem} id={elem} onChange={(e)=>{
-              let newValues = values;
-              newValues[elem] = e.target.value;
-              setValues(newValues);
-            }}/>
-          </div>)
-        })
-      }
-      <Link to={"/printpage"}>Submit</Link>
-      <Outlet/>
-    </div>  )
+        <label>
+          Code No:
+          <input
+            type="text"
+            name="codeNo"
+            value={product.codeNo}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Curing: (in °C, min) eg: "20 15"
+          <input
+            type="text"
+            name="curing"
+            value={product.curing}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Manufacturing Date:
+          <input
+            type="text"
+            name="manufacturingDate"
+            value={product.manufacturingDate}
+            onChange={handleChange}
+          />
+        </label>
+      </form>
+
+      <Link to="/printpage" className="submit-link">
+        Submit
+      </Link>
+      <Outlet />
+    </div>
+  );
 }
 
 export default Main;
